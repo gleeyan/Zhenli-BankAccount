@@ -43,12 +43,39 @@ public double getSavingsBalance(){
 
 public void depositChecking(double checkingAmount){
 	checkingBalance = checkingBalance + checkingAmount;
+	totalAmountInAllAccounts = totalAmountInAllAccounts + checkingAmount;
 }
 
 public void depositSavings(double savingsAmount){
 	savingsBalance = savingsBalance + savingsAmount;
 
 }
+
+public boolean withdrawChecking(double checkingAmount) throws Exception{
+	if (checkingBalance - checkingAmount >= 0){
+    	checkingBalance = checkingBalance - checkingAmount;
+    	return true;
+	}
+    else{
+    	throw new Exception("insufficient funds");
+    	
+    }
+	
+
+}
+
+public boolean withdrawSavings(double savingsAmount) throws Exception{
+	if (savingsBalance - savingsAmount >= 0){
+    	savingsBalance = savingsBalance - savingsAmount;
+    	return true;
+	}
+    else{
+    	
+    	throw new Exception("insufficient funds");
+    }
+
+}
+
 public double total(){
 	double totalAmountInAccount = savingsBalance + checkingBalance;
 	
